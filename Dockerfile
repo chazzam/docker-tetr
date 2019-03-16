@@ -28,14 +28,22 @@ RUN true && \
         /etc/ssl/ \
       && \
     ( [ ! -z "$TCMIRROR" ] && echo "$TCMIRROR" | sudo tee /opt/tcemirror||true) && \
+    true
+RUN true && \
     tce-load -wic \
         ca-certificates.tcz \
         expat2.tcz \
         git.tcz \
       && \
+    true
+RUN true && \
     sudo update-ca-certificates -d && \
     sudo ln -s /usr/local/etc/ssl/certs /etc/ssl/certs && \
+    true
+RUN true && \
     git clone ${TETR_SCRIPTS_REPO} tetr-scripts && \
+    true
+RUN true && \
     ( cd tetr-scripts/include && \
     ./install.sh ) && \
     sudo chown tc:staff \
